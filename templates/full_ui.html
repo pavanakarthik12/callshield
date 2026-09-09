@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep-Live-Cam - Complete Browser UI</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            border-radius: 10px 10px 0 0;
+            text-align: center;
+        }
+        
+        .header h1 { color: white; font-size: 2em; margin-bottom: 5px; }
+        .header p { color: #f0f0f0; font-size: 0.9em; }
+        
+        .main-grid {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 0;
+            background: #2a2a2a;
+            border-radius: 0 0 10px 10px;
+            overflow: hidden;
+        }
+        
+        .sidebar {
+            background: #2a2a2a;
+            padding: 20px;
+            overflow-y: auto;
+            max-height: calc(100vh - 200px);
+            border-right: 1px solid #444;
+        }
+        
+        .video-area {
+            background: #000;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 600px;
+        }
+        
+        .section {
+            background: #333;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #444;
+        }
+        
+        .section-title {
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 18px;
+            background: #667eea;
+            margin-right: 8px;
+            border-radius: 2px;
+        }
+        
+        .image-row {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .image-upload {
+            text-align: center;
+        }
+        
+        .image-preview {
+            width: 150px;
+            height: 150px;
+            border: 2px dashed #667eea;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: #2a2a2a;
+            margin: 0 auto 10px;
+            overflow: hidden;
+        }
+        
+        .image-preview:hover { border-color: #764ba2; background: #333; }
+        .image-preview.loaded { border-color: #28a745; }
+        .image-preview img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .image-preview .placeholder { color: #888; font-size: 3em; }
+        
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 5px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(102,126,234,0.4); }
+        .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+        
+        .btn-secondary {
+            background: #444;
+            color: white;
+        }
+        
+        .btn-secondary:hover { background: #555; }
+        
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .btn-danger:hover { background: #c82333; }
+        
+        .btn-small {
+            padding: 8px;
+            font-size: 1.5em;
+            width: 44px;
+            height: 44px;
+        }
+        
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            background: #2a2a2a;
+            border-radius: 6px;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-right: 8px;
+            cursor: pointer;
+        }
+        
+        .checkbox-item label {
+            cursor: pointer;
+            user-select: none;
+            font-size: 0.9em;
+        }
+        
+        .slider-group {
+            margin-bottom: 15px;
+        }
+        
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+        
+        .slider-label span:last-child {
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        input[type="range"] {
+            width: 100%;
+            height: 6px;
+            border-radius: 5px;
+            background: #444;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+        }
+        
+        input[type="range"]::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            border: none;
+        }
+        
+        select {
+            width: 100%;
+            padding: 10px;
+            background: #2a2a2a;
+            color: #e0e0e0;
+            border: 1px solid #444;
+            border-radius: 6px;
+            font-size: 0.9em;
+            cursor: pointer;
+        }
+        
+        select:focus { outline: none; border-color: #667eea; }
+        
+        .video-stream {
+            max-width: 100%;
+            max-height: 70vh;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+        }
+        
+        .placeholder-text {
+            color: #666;
+            font-size: 1.2em;
+            text-align: center;
+            padding: 50px 20px;
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+        
+        .status-inactive { background: #555; color: #ccc; }
+        .status-active { background: #28a745; color: white; }
+        
+        .alert {
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            display: none;
+        }
+        
+        .alert.show { display: block; }
+        .alert-success { background: #28a745; color: white; }
+        .alert-error { background: #dc3545; color: white; }
+        .alert-info { background: #17a2b8; color: white; }
+        
+        input[type="file"] { display: none; }
+        
+        .swap-btn-col {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎭 Deep-Live-Cam</h1>
+            <p>Real-time face swapping - Complete Browser Interface</p>
+        </div>
+        
+        <div class="main-grid">
+            <!-- Sidebar Controls -->
+            <div class="sidebar">
+                <div id="alert" class="alert"></div>
+                
+                <!-- Source & Target -->
+                <div class="section">
+                    <div class="section-title">📸 Source & Target</div>
+                    <div class="image-row">
+                        <!-- Source -->
+                        <div class="image-upload">
+                            <div class="image-preview" id="sourcePreview" onclick="document.getElementById('sourceFile').click()">
+                                <div class="placeholder">📷</div>
+                            </div>
+                            <button class="btn btn-secondary" onclick="document.getElementById('sourceFile').click()">
+                                Select Source Face
+                            </button>
+                            <input type="file" id="sourceFile" accept="image/*">
+                        </div>
+                        
+                        <!-- Swap Button -->
+                        <div class="swap-btn-col">
+                            <button class="btn btn-small btn-secondary" id="swapBtn" title="Swap source and target">
+                                ↔
+                            </button>
+                        </div>
+                        
+                        <!-- Target -->
+                        <div class="image-upload">
+                            <div class="image-preview" id="targetPreview" onclick="document.getElementById('targetFile').click()">
+                                <div class="placeholder">🎯</div>
+                            </div>
+                            <button class="btn btn-secondary" onclick="document.getElementById('targetFile').click()">
+                                Select Target
+                            </button>
+                            <input type="file" id="targetFile" accept="image/*,video/*">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Camera Control -->
+                <div class="section">
+                    <div class="section-title">🎥 Camera</div>
+                    <button id="startBtn" class="btn btn-primary" disabled>Start Live</button>
+                    <button id="stopBtn" class="btn btn-danger" style="display:none;">Stop</button>
+                    <div style="margin-top: 10px; text-align: center;">
+                        <span id="statusBadge" class="status status-inactive">Not Running</span>
+                    </div>
+                </div>
+                
+                <!-- Options -->
+                <div class="section">
+                    <div class="section-title">⚙️ Options</div>
+                    <div class="options-grid">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="keepFps" checked>
+                            <label for="keepFps">Keep FPS</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="keepAudio" checked>
+                            <label for="keepAudio">Keep Audio</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="manyFaces">
+                            <label for="manyFaces">Many Faces</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="showFps" checked>
+                            <label for="showFps">Show FPS</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="poissonBlend">
+                            <label for="poissonBlend">Poisson Blend</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="colorFix">
+                            <label for="colorFix">Fix Blueish Cam</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="liveMirror">
+                            <label for="liveMirror">Mirror Video</label>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 10px;">
+                        <label style="font-size: 0.9em; display: block; margin-bottom: 5px;">Face Enhancer:</label>
+                        <select id="enhancerSelect">
+                            <option value="none">None</option>
+                            <option value="gfpgan">GFPGAN</option>
+                            <option value="gpen512">GPEN-512</option>
+                            <option value="gpen256">GPEN-256</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Refinement Sliders -->
+                <div class="section">
+                    <div class="section-title">🎨 Refinement</div>
+                    
+                    <div class="slider-group">
+                        <div class="slider-label">
+                            <span>Transparency</span>
+                            <span id="transparencyValue">100%</span>
+                        </div>
+                        <input type="range" id="transparencySlider" min="0" max="100" value="100">
+                    </div>
+                    
+                    <div class="slider-group">
+                        <div class="slider-label">
+                            <span>Sharpness</span>
+                            <span id="sharpnessValue">0%</span>
+                        </div>
+                        <input type="range" id="sharpnessSlider" min="0" max="100" value="0">
+                    </div>
+                    
+                    <div class="slider-group">
+                        <div class="slider-label">
+                            <span>Mouth Mask</span>
+                            <span id="mouthMaskValue">0%</span>
+                        </div>
+                        <input type="range" id="mouthMaskSlider" min="0" max="100" value="0">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Video Area -->
+            <div class="video-area">
+                <div id="videoPlaceholder" class="placeholder-text">
+                    ⬅️ Select source face and click "Start Live" to begin
+                </div>
+                <img id="videoStream" class="video-stream" style="display:none;" src="/video_feed" alt="Live Stream">
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let state = {
+            sourceLoaded: false,
+            targetLoaded: false,
+            cameraActive: false
+        };
+        
+        // Alert function
+        function showAlert(message, type) {
+            const alert = document.getElementById('alert');
+            alert.textContent = message;
+            alert.className = `alert alert-${type} show`;
+            setTimeout(() => alert.classList.remove('show'), 3000);
+        }
+        
+        // Source upload
+        document.getElementById('sourceFile').addEventListener('change', async (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            // Preview
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+                document.getElementById('sourcePreview').innerHTML = `<img src="${ev.target.result}">`;
+                document.getElementById('sourcePreview').classList.add('loaded');
+            };
+            reader.readAsDataURL(file);
+            
+            // Upload
+            const formData = new FormData();
+            formData.append('file', file);
+            
+            try {
+                const response = await fetch('/upload_source', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await response.json();
+                
+                if (response.ok) {
+                    state.sourceLoaded = true;
+                    document.getElementById('startBtn').disabled = false;
+                    showAlert('✓ Source face loaded', 'success');
+                } else {
+                    showAlert('✗ ' + data.error, 'error');
+                }
+            } catch (error) {
+                showAlert('✗ Upload failed', 'error');
+            }
+        });
+        
+        // Target upload (optional for live mode, just for preview)
+        document.getElementById('targetFile').addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+                document.getElementById('targetPreview').innerHTML = `<img src="${ev.target.result}">`;
+                document.getElementById('targetPreview').classList.add('loaded');
+            };
+            reader.readAsDataURL(file);
+            state.targetLoaded = true;
+        });
+        
+        // Start camera
+        document.getElementById('startBtn').addEventListener('click', async () => {
+            if (!state.sourceLoaded) {
+                showAlert('Please upload a source face first', 'error');
+                return;
+            }
+            
+            document.getElementById('startBtn').disabled = true;
+            showAlert('Starting camera...', 'info');
+            
+            try {
+                const response = await fetch('/start_camera', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        camera_index: 0,
+                        options: {
+                            many_faces: document.getElementById('manyFaces').checked,
+                            live_mirror: document.getElementById('liveMirror').checked,
+                            show_fps: document.getElementById('showFps').checked,
+                            poisson_blend: document.getElementById('poissonBlend').checked,
+                            color_correction: document.getElementById('colorFix').checked,
+                            enhancer: document.getElementById('enhancerSelect').value,
+                            transparency: document.getElementById('transparencySlider').value / 100,
+                            sharpness: document.getElementById('sharpnessSlider').value / 100,
+                            mouth_mask: document.getElementById('mouthMaskSlider').value / 100
+                        }
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    state.cameraActive = true;
+                    document.getElementById('videoPlaceholder').style.display = 'none';
+                    document.getElementById('videoStream').style.display = 'block';
+                    document.getElementById('startBtn').style.display = 'none';
+                    document.getElementById('stopBtn').style.display = 'block';
+                    document.getElementById('statusBadge').className = 'status status-active';
+                    document.getElementById('statusBadge').textContent = 'Running';
+                    showAlert('✓ Camera started! Face swapping active.', 'success');
+                } else {
+                    document.getElementById('startBtn').disabled = false;
+                    showAlert('✗ ' + data.error, 'error');
+                }
+            } catch (error) {
+                document.getElementById('startBtn').disabled = false;
+                showAlert('✗ Failed to start: ' + error.message, 'error');
+            }
+        });
+        
+        // Stop camera
+        document.getElementById('stopBtn').addEventListener('click', async () => {
+            try {
+                const response = await fetch('/stop_camera', {method: 'POST'});
+                const data = await response.json();
+                
+                if (response.ok) {
+                    state.cameraActive = false;
+                    document.getElementById('videoStream').style.display = 'none';
+                    document.getElementById('videoPlaceholder').style.display = 'block';
+                    document.getElementById('videoPlaceholder').textContent = 'Camera stopped. Click Start to resume.';
+                    document.getElementById('stopBtn').style.display = 'none';
+                    document.getElementById('startBtn').style.display = 'block';
+                    document.getElementById('startBtn').disabled = false;
+                    document.getElementById('statusBadge').className = 'status status-inactive';
+                    document.getElementById('statusBadge').textContent = 'Stopped';
+                    showAlert('Camera stopped', 'info');
+                }
+            } catch (error) {
+                showAlert('✗ Failed to stop', 'error');
+            }
+        });
+        
+        // Sliders
+        document.getElementById('transparencySlider').addEventListener('input', (e) => {
+            document.getElementById('transparencyValue').textContent = e.target.value + '%';
+        });
+        
+        document.getElementById('sharpnessSlider').addEventListener('input', (e) => {
+            document.getElementById('sharpnessValue').textContent = e.target.value + '%';
+        });
+        
+        document.getElementById('mouthMaskSlider').addEventListener('input', (e) => {
+            document.getElementById('mouthMaskValue').textContent = e.target.value + '%';
+        });
+        
+        // Swap button
+        document.getElementById('swapBtn').addEventListener('click', () => {
+            const sourcePreview = document.getElementById('sourcePreview').innerHTML;
+            const targetPreview = document.getElementById('targetPreview').innerHTML;
+            document.getElementById('sourcePreview').innerHTML = targetPreview;
+            document.getElementById('targetPreview').innerHTML = sourcePreview;
+            
+            const temp = state.sourceLoaded;
+            state.sourceLoaded = state.targetLoaded;
+            state.targetLoaded = temp;
+        });
+    </script>
+</body>
+</html>
