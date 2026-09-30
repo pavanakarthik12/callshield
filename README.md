@@ -1,438 +1,842 @@
-<h1 align="center">Deep-Live-Cam 2.1.6</h1>
+# 🛡️ CallShield AI
+
+### AI-Powered Deepfake Voice & Video Verification for Fraud-Call Detection
 
 <p align="center">
-  Real-time face swap and video deepfake with a single click and only a single image.
+  <strong>Simulate the attack. Detect the manipulation. Protect the call.</strong>
 </p>
 
 <p align="center">
-<a href="https://trendshift.io/repositories/11395" target="_blank"><img src="https://trendshift.io/api/badge/repositories/11395" alt="hacksider%2FDeep-Live-Cam | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
+  CallShield AI is an AI-powered verification system designed to identify manipulated voice and video content during suspicious calls.
 </p>
 
-<p align="center">
-  <img src="media/demo.gif" alt="Demo GIF" width="800">
-</p>
+---
 
-##  Disclaimer
+## ⚡ What is CallShield AI?
 
-This deepfake software is designed to be a productive tool for the AI-generated media industry. It can assist artists in animating custom characters, creating engaging content, and even using models for clothing design.
+**CallShield AI** is a deepfake detection and verification system designed for fraud-call scenarios.
 
-We are aware of the potential for unethical applications and are committed to preventative measures. A built-in check prevents the program from processing inappropriate media (nudity, graphic content, sensitive material like war footage, etc.). We will continue to develop this project responsibly, adhering to the law and ethics. We may shut down the project or add watermarks if legally required.
+Instead of attempting to create deceptive media for real-world use, our system uses **controlled deepfake simulations** to test whether our detection pipeline can identify manipulated content.
 
-- Ethical Use: Users are expected to use this software responsibly and legally. If using a real person's face, obtain their consent and clearly label any output as a deepfake when sharing online.
+For video simulation, we use **Deep-Live-Cam** as an external research/testing component to generate controlled face-swapped samples.
 
-- Content Restrictions: The software includes built-in checks to prevent processing inappropriate media, such as nudity, graphic content, or sensitive material.
+> **Deep-Live-Cam simulates the attack. CallShield AI detects the attack.**
 
-- Legal Compliance: We adhere to all relevant laws and ethical guidelines. If legally required, we may shut down the project or add watermarks to the output.
+The generated samples are passed into our detection pipeline, where the system analyzes the media for manipulation indicators and produces a risk assessment.
 
-- User Responsibility: We are not responsible for end-user actions. Users must ensure their use of the software aligns with ethical standards and legal requirements.
+---
 
-By using this software, you agree to these terms and commit to using it in a manner that respects the rights and dignity of others.
+# 🧠 Core Concept
 
-Users are expected to use this software responsibly and legally. If using a real person's face, obtain their consent and clearly label any output as a deepfake when sharing online. We are not responsible for end-user actions.
-
-## Pre-built Deep-Live-Cam 2.7.5 Ultimate!
-
-<p align="center">
-  <a href="https://deeplivecam.net/index.php/quickstart">
-    <img src="https://github.com/user-attachments/assets/fa2cdf79-c933-4b93-844a-b087192261ed" width="100%" alt="Lite / Ultimate Download Banner">
-  </a>
-</p>
-
-<p align="center">
-<a href="https://deeplivecam.net/index.php/plans/nvidia-gpu?plan_id=0&group_id=1">
-  <img src="https://github.com/user-attachments/assets/56b61811-3a1e-4672-9b50-cf7f6e8e6852" width="40" alt="Windows">
-</a>
-  &nbsp;&nbsp;&nbsp;
-<a href="https://deeplivecam.net/index.php/plans/nvidia-gpu?plan_id=0&group_id=2">
-  <img src="https://github.com/user-attachments/assets/6538e3a6-c957-431a-b586-2d6abcf534dc" width="34" alt="Mac Silicon">
-</a>
-  &nbsp;&nbsp;&nbsp;
-<a href="https://deeplivecam.net/index.php/plans/nvidia-gpu?plan_id=0&group_id=3">
-  <img src="https://github.com/user-attachments/assets/ad45142e-426c-4364-a2a9-a512670cc62c" width="40" alt="CPU">
-</a>
-</p>
-
-<p align="center">
-  <strong>Windows • Mac Silicon • CPU • NVIDIA • AMD</strong>
-</p>
-
-<p align="center">
-  Builds optimized for your hardware.
-</p>
-
-<p align="center">
-  <a href="https://deeplivecam.net/index.php/quickstart">
-    <img src="media/Download.png" width="280" alt="Download">
-  </a>
-</p>
-
-> **Ultimate** includes **30+ exclusive features**, performance optimizations, and **priority support** We only have a single official website which is https://deeplivecam.net . Please be careful on where you download other versions of this application aside from that website and this github repo.
-
-Perfect if you want the fastest setup with **zero manual installation**, pre-configured dependencies, and optimized builds for every supported platform.
-
-## TLDR; Live Deepfake in just 3 Clicks
-![easysteps](https://github.com/user-attachments/assets/af825228-852c-411b-b787-ffd9aac72fc6)
-1. Select a face
-2. Select which camera to use
-3. Press live!
-
-## Features & Uses - Everything is in real-time
-
-### Mouth Mask
-
-**Retain your original mouth for accurate movement using Mouth Mask**
-
-<p align="center">
-  <img src="media/ludwig.gif" alt="resizable-gif">
-</p>
-
-### Face Mapping
-
-**Use different faces on multiple subjects simultaneously**
-
-<p align="center">
-  <img src="media/streamers.gif" alt="face_mapping_source">
-</p>
-
-### Your Movie, Your Face
-
-**Watch movies with any face in real-time**
-
-<p align="center">
-  <img src="media/movie.gif" alt="movie">
-</p>
-
-### Live Show
-
-**Run Live shows and performances**
-
-<p align="center">
-  <img src="media/live_show.gif" alt="show">
-</p>
-
-### Memes
-
-**Create Your Most Viral Meme Yet**
-
-<p align="center">
-  <img src="media/meme.gif" alt="show" width="450"> 
-  <br>
-  <sub>Created using Many Faces feature in Deep-Live-Cam</sub>
-</p>
-
-### Omegle
-
-**Surprise people on Omegle**
-
-<p align="center">
-  <video src="https://github.com/user-attachments/assets/2e9b9b82-fa04-4b70-9f56-b1f68e7672d0" width="450" controls></video>
-</p>
-
-## Installation (Manual)
-
-**Please be aware that the installation requires technical skills and is not for beginners. Consider downloading the quickstart version.**
-
-<details>
-<summary>Click to see the process</summary>
-
-### Installation
-
-This is more likely to work on your computer but will be slower as it utilizes the CPU.
-
-**1. Set up Your Platform**
-
--   Python (3.14 recommended; 3.11-3.14 supported)
--   pip
--   git
--   [ffmpeg](https://www.youtube.com/watch?v=OlNWCpFdVMA) - ```iex (irm ffmpeg.tc.ht)```
--   [Visual Studio 2022 Runtimes (Windows)](https://visualstudio.microsoft.com/visual-cpp-build-tools/)
-
-**2. Clone the Repository**
-
-```bash
-git clone --depth 1 https://github.com/hacksider/Deep-Live-Cam.git
-cd Deep-Live-Cam
+```text
+                    CONTROLLED SIMULATION
+                           │
+                           ▼
+                ┌──────────────────────┐
+                │   Deep-Live-Cam      │
+                │                      │
+                │ Face-Swap Simulation │
+                └──────────┬───────────┘
+                           │
+                           │ Simulated Deepfake
+                           ▼
+                ┌──────────────────────┐
+                │     CALLSHIELD       │
+                │      INPUT           │
+                └──────────┬───────────┘
+                           │
+                           ▼
+                ┌──────────────────────┐
+                │   PRE-PROCESSING     │
+                │                      │
+                │ Frame Extraction     │
+                │ Face Detection       │
+                │ Audio Extraction     │
+                │ Signal Preparation   │
+                └──────────┬───────────┘
+                           │
+              ┌────────────┴────────────┐
+              │                         │
+              ▼                         ▼
+     ┌─────────────────┐       ┌─────────────────┐
+     │ VIDEO ANALYSIS  │       │ AUDIO ANALYSIS  │
+     │                 │       │                 │
+     │ Facial Artifacts│       │ Voice Features  │
+     │ Temporal Signals│       │ Spectral Signals│
+     │ Frame Consistency│      │ Manipulation    │
+     └────────┬────────┘       └────────┬────────┘
+              │                         │
+              └────────────┬────────────┘
+                           ▼
+                ┌──────────────────────┐
+                │  MULTI-MODAL FUSION  │
+                │                      │
+                │ Video + Audio        │
+                │ Evidence Correlation │
+                └──────────┬───────────┘
+                           │
+                           ▼
+                ┌──────────────────────┐
+                │   RISK ASSESSMENT    │
+                │                      │
+                │ Authenticity Score   │
+                │ Manipulation Signals │
+                │ Confidence           │
+                └──────────┬───────────┘
+                           │
+                           ▼
+                ┌──────────────────────┐
+                │    CALLSHIELD        │
+                │      ALERT           │
+                │                      │
+                │  ✓ Authentic         │
+                │  ⚠ Suspicious        │
+                │  ✕ Likely Manipulated│
+                └──────────────────────┘
 ```
 
-**3. Download the Models**
+---
 
-1. [gfpgan-1024.onnx](https://huggingface.co/hacksider/deep-live-cam/resolve/main/gfpgan-1024.onnx)
-2. [inswapper\_128\_fp16.onnx](https://huggingface.co/hacksider/deep-live-cam/resolve/main/inswapper_128_fp16.onnx)
+# 🔥 Why CallShield?
 
-Place these files in the "**models**" folder.
+Traditional fraud detection often focuses on:
 
-**4. Install Dependencies**
-
-We highly recommend using a `venv` to avoid issues.
-
-
-For Windows:
-```bash
-python -m venv venv
-venv\Scripts\activate
-pip install -r requirements.txt
-```
-For Linux:
-```bash
-# Ensure you use the installed Python 3.14
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
+```text
+Phone Number
+     │
+     ▼
+Caller Identity
+     │
+     ▼
+Known Fraud Patterns
 ```
 
-**For macOS:**
+Modern scams can additionally involve **synthetically manipulated audio and video**.
 
-Apple Silicon (M1 through M5) requires specific setup:
+CallShield introduces another verification layer:
 
-```bash
-# Install Python 3.14
-brew install python@3.14
-
-# Install tkinter package (required for the GUI)
-brew install python-tk@3.14
-
-# Create and activate virtual environment with Python 3.14
-python3.14 -m venv venv
-source venv/bin/activate
-
-# Install dependencies
-pip install -r requirements.txt
+```text
+             CALL
+              │
+       ┌──────┴──────┐
+       ▼             ▼
+     AUDIO          VIDEO
+       │             │
+       ▼             ▼
+   ANALYSIS       ANALYSIS
+       │             │
+       └──────┬──────┘
+              ▼
+        MULTI-MODAL
+        VERIFICATION
+              │
+              ▼
+        RISK ASSESSMENT
 ```
 
-** In case something goes wrong and you need to reinstall the virtual environment **
+---
 
-```bash
-# Deactivate the virtual environment
-rm -rf venv
+# 🏗️ System Architecture
 
-# Reinstall the virtual environment
-python -m venv venv
-source venv/bin/activate
-
-# install the dependencies again
-pip install -r requirements.txt
-
-# gfpgan and basicsrs issue fix
-pip install git+https://github.com/xinntao/BasicSR.git@master
-pip uninstall gfpgan -y
-pip install git+https://github.com/TencentARC/GFPGAN.git@master
+```text
+                         ┌───────────────────┐
+                         │   Incoming Call   │
+                         └─────────┬─────────┘
+                                   │
+                                   ▼
+                     ┌─────────────────────────┐
+                     │     Media Capture       │
+                     │                         │
+                     │ Audio + Video Stream    │
+                     └────────────┬────────────┘
+                                  │
+                    ┌─────────────┴─────────────┐
+                    │                           │
+                    ▼                           ▼
+          ┌──────────────────┐       ┌──────────────────┐
+          │  Audio Pipeline  │       │  Video Pipeline  │
+          └────────┬─────────┘       └────────┬─────────┘
+                   │                          │
+                   ▼                          ▼
+          ┌──────────────────┐       ┌──────────────────┐
+          │ Feature Extraction│       │ Face / Frame     │
+          │                  │       │ Analysis         │
+          └────────┬─────────┘       └────────┬─────────┘
+                   │                          │
+                   ▼                          ▼
+          ┌──────────────────┐       ┌──────────────────┐
+          │ Voice Detection  │       │ Deepfake Model   │
+          └────────┬─────────┘       └────────┬─────────┘
+                   │                          │
+                   └────────────┬─────────────┘
+                                ▼
+                     ┌────────────────────┐
+                     │  Evidence Fusion   │
+                     └──────────┬─────────┘
+                                │
+                                ▼
+                     ┌────────────────────┐
+                     │  Risk Engine       │
+                     │                    │
+                     │ Authenticity       │
+                     │ Confidence         │
+                     │ Evidence           │
+                     └──────────┬─────────┘
+                                │
+                                ▼
+                     ┌────────────────────┐
+                     │  CALLSHIELD UI     │
+                     │                    │
+                     │  STATUS            │
+                     │  RISK              │
+                     │  EVIDENCE          │
+                     └────────────────────┘
 ```
 
-**Run:** If you don't have a GPU, you can run Deep-Live-Cam using `python run.py`. Note that initial execution will download models (~300MB).
+---
 
-### GPU Acceleration
+# 🧪 Deepfake Simulation Layer
 
-**CUDA Execution Provider (Nvidia)**
+CallShield requires manipulated media to validate its detection pipeline.
 
-1. Install [CUDA Toolkit 12.8.0](https://developer.nvidia.com/cuda-12-8-0-download-archive)
-2. Install [cuDNN v8.9.7 for CUDA 12.x](https://developer.nvidia.com/rdp/cudnn-archive) (required for onnxruntime-gpu):
-   - Download cuDNN v8.9.7 for CUDA 12.x
-   - Make sure the cuDNN bin directory is in your system PATH
-3. Install dependencies:
+Rather than relying exclusively on naturally occurring fraud footage, we use a **controlled simulation environment**.
 
-```bash
-pip install -U torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
-pip uninstall onnxruntime onnxruntime-gpu
-pip install onnxruntime-gpu==1.26.0
+### Simulation Flow
+
+```text
+Reference Image
+       │
+       ▼
+┌───────────────────┐
+│  Deep-Live-Cam    │
+│                   │
+│ Controlled        │
+│ Face-Swap         │
+│ Simulation        │
+└─────────┬─────────┘
+          │
+          ▼
+ Simulated Deepfake
+          │
+          ▼
+┌───────────────────┐
+│    CallShield     │
+│     Detector      │
+└─────────┬─────────┘
+          │
+          ▼
+Manipulation Analysis
+          │
+          ▼
+ Detection Result
 ```
 
-3. Usage:
+### Why use simulation?
 
-```bash
-python run.py --execution-provider cuda
+Controlled generation allows us to create test cases where the manipulation source is known.
+
+For example:
+
+```text
+Original Video
+      │
+      ├──► Authentic Sample
+      │
+      └──► Controlled Face-Swap
+                    │
+                    ▼
+              Deepfake Sample
+                    │
+                    ▼
+              CallShield Model
+                    │
+                    ▼
+             Compare Results
 ```
 
-**CoreML Execution Provider (Apple Silicon)**
+This provides a reproducible environment for evaluating the detector.
 
-Apple Silicon (M1 through M5) specific installation:
+---
 
-1. Make sure you've completed the macOS setup above using Python 3.14.
-2. No extra install step is needed — `requirements.txt` pulls the official
-   `onnxruntime` build, whose macOS wheels ship the CoreML execution provider.
-   If you previously installed the unmaintained `onnxruntime-silicon` fork,
-   remove it first, as it shadows the real package:
+# 👁️ First-View Detection
 
-```bash
-pip uninstall onnxruntime-silicon
-pip install -r requirements.txt
+One of CallShield's key concepts is **early media verification**.
+
+Instead of requiring a user to manually inspect an entire recording, the system begins analyzing the incoming media as soon as it becomes available.
+
+```text
+VIDEO FRAME
+     │
+     ▼
+┌───────────────┐
+│ Face Detection│
+└───────┬───────┘
+        │
+        ▼
+┌───────────────┐
+│ Frame Analysis│
+└───────┬───────┘
+        │
+        ▼
+┌──────────────────┐
+│ Temporal Analysis│
+└────────┬─────────┘
+         │
+         ▼
+┌──────────────────┐
+│ Manipulation     │
+│ Indicators       │
+└────────┬─────────┘
+         │
+         ▼
+   Initial Risk
+   Assessment
 ```
 
-3. Usage:
+The first-view result is treated as an **early warning signal**, not as an absolute proof of manipulation.
 
-```bash
-python3.14 run.py --execution-provider coreml
+---
+
+# 🎙️ Audio Verification
+
+The same principle can be applied to suspicious voice communication.
+
+```text
+VOICE STREAM
+     │
+     ▼
+Audio Preprocessing
+     │
+     ▼
+Feature Extraction
+     │
+     ├───────────────┐
+     │               │
+     ▼               ▼
+Spectral Features   Temporal Features
+     │               │
+     └───────┬───────┘
+             ▼
+       Voice Model
+             │
+             ▼
+      Manipulation
+        Analysis
+             │
+             ▼
+       Risk Signal
 ```
 
-**Important Notes for macOS:**
-- Python 3.11 is the minimum (onnxruntime dropped 3.10); 3.14 is recommended
-- Always run with `python3.14` command not just `python` if you have multiple Python versions installed
-- If you get error about `_tkinter` missing, reinstall the tkinter package: `brew reinstall python-tk@3.14`
-- If you get model loading errors, check that your models are in the correct folder
-- If you encounter conflicts with other Python versions, consider uninstalling them:
-  ```bash
-  # List all installed Python versions
-  brew list | grep python
+Potential signals can include:
 
-  # Uninstall conflicting versions if needed
-  brew uninstall --ignore-dependencies python@3.11
+* Spectral inconsistencies
+* Temporal irregularities
+* Synthetic voice characteristics
+* Abnormal acoustic patterns
+* Model confidence
 
-  # Keep only Python 3.14
-  brew cleanup
-  ```
+---
 
-**CoreML Execution Provider (Apple Legacy)**
+# 🔗 Multi-Modal Verification
 
-1. Install dependencies:
+A major part of CallShield is combining evidence instead of relying on one signal.
 
-```bash
-pip uninstall onnxruntime onnxruntime-coreml
-pip install onnxruntime-coreml==1.21.0
+```text
+                 ┌──────────────┐
+                 │    AUDIO     │
+                 └──────┬───────┘
+                        │
+                        ▼
+                  Audio Signal
+                        │
+                        │
+                        ▼
+                 ┌──────────────┐
+                 │    FUSION    │
+                 │    ENGINE    │
+                 └──────┬───────┘
+                        ▲
+                        │
+                        │
+                  Video Signal
+                        ▲
+                        │
+                 ┌──────┴───────┐
+                 │    VIDEO     │
+                 └──────────────┘
+
+                        │
+                        ▼
+                 ┌──────────────┐
+                 │ RISK ENGINE  │
+                 └──────┬───────┘
+                        │
+                        ▼
+             ┌────────────────────┐
+             │  VERIFICATION      │
+             │                    │
+             │ Authentic          │
+             │ Suspicious         │
+             │ Manipulated        │
+             └────────────────────┘
 ```
 
-2. Usage:
+---
 
-```bash
-python run.py --execution-provider coreml
+# 📊 Detection Result
+
+CallShield is designed to provide more than a binary answer.
+
+Example:
+
+```text
+╔══════════════════════════════════════╗
+║          CALLSHIELD RESULT           ║
+╠══════════════════════════════════════╣
+║                                      ║
+║  STATUS       : SUSPICIOUS           ║
+║                                      ║
+║  VIDEO SIGNAL : HIGH RISK            ║
+║  AUDIO SIGNAL : LOW RISK             ║
+║                                      ║
+║  CONFIDENCE   : 87%                  ║
+║                                      ║
+║  SIGNALS DETECTED:                   ║
+║    • Facial inconsistency            ║
+║    • Temporal artifact               ║
+║    • Frame-level anomaly             ║
+║                                      ║
+╚══════════════════════════════════════╝
 ```
 
-**DirectML Execution Provider (Windows)**
+The system can expose the **evidence behind a decision**, making the result more useful for verification than a simple "AI says fake."
 
-1. Install dependencies:
+---
 
-```bash
-pip uninstall onnxruntime onnxruntime-directml
-pip install onnxruntime-directml==1.21.0
+# 🧩 Major Components
+
+```text
+CALLSHIELD
+│
+├── 📥 Input Layer
+│   ├── Video
+│   ├── Audio
+│   └── Camera Stream
+│
+├── 🧹 Preprocessing
+│   ├── Frame Extraction
+│   ├── Face Detection
+│   ├── Audio Extraction
+│   └── Signal Normalization
+│
+├── 🧠 AI Detection
+│   ├── Video Detection
+│   ├── Audio Detection
+│   └── Feature Analysis
+│
+├── 🔗 Fusion Engine
+│   ├── Audio Evidence
+│   ├── Video Evidence
+│   └── Confidence
+│
+├── ⚠️ Risk Engine
+│   ├── Risk Classification
+│   ├── Evidence Generation
+│   └── Alert Generation
+│
+└── 🖥️ Interface
+    ├── Live Status
+    ├── Risk Score
+    ├── Evidence
+    └── Verification Result
 ```
 
-2. Usage:
+---
 
-```bash
-python run.py --execution-provider directml
+# 🧪 Testing Strategy
+
+CallShield can be evaluated using multiple categories of media.
+
+### 01 — Authentic
+
+```text
+Real Person
+     │
+     ▼
+Original Video
+     │
+     ▼
+CallShield
+     │
+     ▼
+Expected → LOW MANIPULATION RISK
 ```
 
-**OpenVINO™ Execution Provider (Intel)**
+### 02 — Simulated Face Swap
 
-1. Install dependencies:
-
-```bash
-pip uninstall onnxruntime onnxruntime-openvino
-pip install onnxruntime-openvino==1.21.0
+```text
+Reference Face
+     │
+     ▼
+Deep-Live-Cam
+     │
+     ▼
+Controlled Deepfake
+     │
+     ▼
+CallShield
+     │
+     ▼
+Expected → HIGHER MANIPULATION RISK
 ```
 
-**Note:** `onnxruntime-openvino` newer than 1.21.0 must be installed together with `openvino`, and the two versions must correspond one-to-one. The supported pairings are:
+### 03 — Mixed Conditions
 
-| onnxruntime-openvino | OpenVINO |
-| --- | --- |
-| 1.24.1 | 2025.4.1 |
-| 1.23.0 | 2025.3 |
-| 1.22.0 | 2025.1 |
-
-```bash
-# Example: onnxruntime-openvino 1.24.1 pairs with OpenVINO 2025.4.1
-pip install openvino==2025.4.1
-pip install onnxruntime-openvino==1.24.1
+```text
+Deepfake
+   +
+Low Light
+   +
+Compression
+   +
+Camera Noise
+       │
+       ▼
+   CallShield
+       │
+       ▼
+Robustness Evaluation
 ```
 
-See the [OpenVINO Execution Provider requirements](https://onnxruntime.ai/docs/execution-providers/OpenVINO-ExecutionProvider.html#requirements) for the full version-mapping details.
+This helps evaluate whether the detector remains useful when real-world video quality is poor.
 
-2. Usage:
+---
 
-```bash
-python run.py --execution-provider openvino
-```
-</details>
+# 🔬 Evaluation
 
-## Usage
+Important evaluation metrics include:
 
-**1. Image/Video Mode**
-
--   Execute `python run.py`.
--   Choose a source face image and a target image/video.
--   Click "Start".
--   The output will be saved in a directory named after the target video.
-
-**2. Webcam Mode**
-
--   Execute `python run.py`.
--   Select a source face image.
--   Click "Live".
--   Wait for the preview to appear (10-30 seconds).
--   Use a screen capture tool like OBS to stream.
--   To change the face, select a new source image.
-
-## Download all models in this huggingface link
-- [**Download models here**](https://huggingface.co/hacksider/deep-live-cam/tree/main)
-
-## Command Line Arguments (Unmaintained)
-
-```
-options:
-  -h, --help                                               show this help message and exit
-  -s SOURCE_PATH, --source SOURCE_PATH                     select a source image
-  -t TARGET_PATH, --target TARGET_PATH                     select a target image or video
-  -o OUTPUT_PATH, --output OUTPUT_PATH                     select output file or directory
-  --frame-processor FRAME_PROCESSOR [FRAME_PROCESSOR ...]  frame processors (choices: face_swapper, face_enhancer, ...)
-  --keep-fps                                               keep original fps
-  --keep-audio                                             keep original audio
-  --keep-frames                                            keep temporary frames
-  --many-faces                                             process every face
-  --map-faces                                              map source target faces
-  --mouth-mask                                             mask the mouth region
-  --video-encoder {libx264,libx265,libvpx-vp9}             adjust output video encoder
-  --video-quality [0-51]                                   adjust output video quality
-  --live-mirror                                            the live camera display as you see it in the front-facing camera frame
-  --live-resizable                                         the live camera frame is resizable
-  --max-memory MAX_MEMORY                                  maximum amount of RAM in GB
-  --execution-provider {cpu} [{cpu} ...]                   available execution provider (choices: cpu, ...)
-  --execution-threads EXECUTION_THREADS                    number of execution threads
-  -v, --version                                            show program's version number and exit
+```text
+                MODEL EVALUATION
+                       │
+        ┌──────────────┼──────────────┐
+        ▼              ▼              ▼
+    Accuracy        Precision       Recall
+        │              │              │
+        └──────────────┼──────────────┘
+                       ▼
+                  F1 Score
+                       │
+                       ▼
+              False Positive Rate
+                       │
+                       ▼
+              False Negative Rate
 ```
 
-Looking for a CLI mode? Using the -s/--source argument will make the run program in cli mode.
+For a fraud-detection system, **false positives and false negatives should both be tracked**, rather than relying only on overall accuracy.
 
-## Press
+---
 
- - [**Ars Technica**](https://arstechnica.com/information-technology/2024/08/new-ai-tool-enables-real-time-face-swapping-on-webcams-raising-fraud-concerns/) - *"Deep-Live-Cam goes viral, allowing anyone to become a digital doppelganger"*
- - [**Yahoo!**](https://www.yahoo.com/tech/ok-viral-ai-live-stream-080041056.html) - *"OK, this viral AI live stream software is truly terrifying"*
- - [**CNN Brasil**](https://www.cnnbrasil.com.br/tecnologia/ia-consegue-clonar-rostos-na-webcam-entenda-funcionamento/) - *"AI can clone faces on webcam; understand how it works"*
- - [**Bloomberg Technoz**](https://www.bloombergtechnoz.com/detail-news/71032/kenalan-dengan-teknologi-deep-live-cam-bisa-jadi-alat-menipu) - *"Get to know Deep Live Cam technology, it can be used as a tool for deception."*
- - [**TrendMicro**](https://www.trendmicro.com/vinfo/gb/security/news/cyber-attacks/ai-vs-ai-deepfakes-and-ekyc) - *"AI vs AI: DeepFakes and eKYC"*
- - [**PetaPixel**](https://petapixel.com/2024/08/14/deep-live-cam-deepfake-ai-tool-lets-you-become-anyone-in-a-video-call-with-single-photo-mark-zuckerberg-jd-vance-elon-musk/) - *"Deepfake AI Tool Lets You Become Anyone in a Video Call With Single Photo"*
- - [**SomeOrdinaryGamers**](https://www.youtube.com/watch?time_continue=1074&v=py4Tc-Y8BcY) - *"That's Crazy, Oh God. That's Fucking Freaky Dude... That's So Wild Dude"*
- - [**IShowSpeed**](https://www.youtube.com/live/mFsCe7AIxq8?feature=shared&t=2686) - *"Alright look look look, now look chat, we can do any face we want to look like chat"*
- - [**TechLinked (Linus Tech Tips)**](https://www.youtube.com/watch?v=wnCghLjqv3s&t=551s) - *"They do a pretty good job matching poses, expression and even the lighting"*
- - [**IShowSpeed**](https://youtu.be/JbUPRmXRUtE?t=3964) - *"What the F***! Why do I look like Vinny Jr? I look exactly like Vinny Jr!? No, this shit is crazy! Bro This is F*** Crazy!"*
+# 🛡️ Responsible AI
 
+CallShield is designed around defensive use.
 
-## Credits
+The deepfake generator is used only as a **controlled simulation component for testing and validating detection**.
 
--   [ffmpeg](https://ffmpeg.org/): for making video-related operations easy
--   [Henry](https://github.com/henryruhs): One of the major contributor in this repo
--   [deepinsight](https://github.com/deepinsight): for their [insightface](https://github.com/deepinsight/insightface) project which provided a well-made library and models. Please be reminded that the [use of the model is for non-commercial research purposes only](https://github.com/deepinsight/insightface?tab=readme-ov-file#license).
--   [havok2-htwo](https://github.com/havok2-htwo): for sharing the code for webcam
--   [GosuDRM](https://github.com/GosuDRM): for the open version of roop
--   [pereiraroland26](https://github.com/pereiraroland26): Multiple faces support
--   [vic4key](https://github.com/vic4key): For supporting/contributing to this project
--   [kier007](https://github.com/kier007): for improving the user experience
--   [qitianai](https://github.com/qitianai): for multi-lingual support
--   [laurigates](https://github.com/laurigates): Decoupling stuffs to make everything faster!
--   [maxwbuckley](https://github.com/maxwbuckley): For making the effort to optimize this for mac!
--   and [all developers](https://github.com/hacksider/Deep-Live-Cam/graphs/contributors) behind libraries used in this project.
--   Footnote: Please be informed that the base author of the code is [s0md3v](https://github.com/s0md3v/roop)
--   All the wonderful users who helped make this project go viral by starring the repo ❤️
+```text
+         ┌───────────────────────┐
+         │ Controlled Simulation  │
+         └───────────┬───────────┘
+                     │
+                     ▼
+              Test Dataset
+                     │
+                     ▼
+            Detection Research
+                     │
+                     ▼
+             Model Evaluation
+                     │
+                     ▼
+              Fraud Defense
+```
 
-[![Stargazers](https://reporoster.com/stars/hacksider/Deep-Live-Cam)](https://github.com/hacksider/Deep-Live-Cam/stargazers)
+We do not position the simulation component as a mechanism for impersonating real people or conducting deceptive activity.
 
-## Contributions
+Any testing involving real individuals should use appropriate consent and comply with applicable laws and institutional requirements.
 
-![Alt](https://repobeats.axiom.co/api/embed/fec8e29c45dfdb9c5916f3a7830e1249308d20e1.svg "Repobeats analytics image")
+---
 
-## Stars to the Moon 🚀
+# ⚠️ Important Note About Deep-Live-Cam
 
-<a href="https://star-history.com/#hacksider/deep-live-cam&Date">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=hacksider/deep-live-cam&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=hacksider/deep-live-cam&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=hacksider/deep-live-cam&type=Date" />
- </picture>
-</a>
+Deep-Live-Cam is **not the CallShield detection model**.
+
+It is used as an external tool to create controlled face-manipulation samples for testing.
+
+The roles are intentionally separated:
+
+```text
+┌──────────────────────┐
+│    DEEP-LIVE-CAM     │
+│                      │
+│  Attack Simulation  │
+└──────────┬───────────┘
+           │
+           │ simulated media
+           ▼
+┌──────────────────────┐
+│     CALLSHIELD       │
+│                      │
+│ Detection + Analysis │
+└──────────────────────┘
+```
+
+**Simulation ≠ Detection**
+
+This separation allows us to evaluate whether CallShield can recognize manipulated content generated by an independent system.
+
+---
+
+# 🚀 Demonstration Flow
+
+Our hackathon demonstration follows this sequence:
+
+```text
+        START
+          │
+          ▼
+   ┌───────────────┐
+   │ Authentic     │
+   │ Media Sample  │
+   └───────┬───────┘
+           │
+           ▼
+      CallShield
+           │
+           ▼
+      Verification
+           │
+           ▼
+      Baseline Result
+           │
+           ▼
+   ┌───────────────┐
+   │ Controlled    │
+   │ Deepfake      │
+   │ Simulation    │
+   └───────┬───────┘
+           │
+           ▼
+      CallShield
+           │
+           ▼
+   First-View Analysis
+           │
+           ▼
+   Detection Signals
+           │
+           ▼
+    Risk Assessment
+           │
+           ▼
+      🚨 ALERT
+```
+
+---
+
+# 🎯 Core Innovation
+
+CallShield is not simply:
+
+> **"Is this video fake?"**
+
+The broader approach is:
+
+```text
+                MEDIA
+                  │
+                  ▼
+          ┌───────────────┐
+          │   ANALYZE    │
+          └───────┬───────┘
+                  │
+        ┌─────────┴─────────┐
+        ▼                   ▼
+      AUDIO                VIDEO
+        │                   │
+        └─────────┬─────────┘
+                  ▼
+            CORRELATE
+                  │
+                  ▼
+          EXTRACT EVIDENCE
+                  │
+                  ▼
+           ASSESS RISK
+                  │
+                  ▼
+          PROTECT THE USER
+```
+
+The goal is to transform deepfake detection from a hidden model prediction into an **explainable verification layer for suspicious communication**.
+
+---
+
+# 🧰 Technology Stack
+
+```text
+Frontend
+   ├── React / Web UI
+   └── Real-time visualization
+
+Backend
+   ├── Python
+   ├── FastAPI
+   └── REST / WebSocket APIs
+
+AI / ML
+   ├── Computer Vision
+   ├── Deepfake Detection
+   ├── Audio Analysis
+   └── Multi-modal Fusion
+
+Media
+   ├── OpenCV
+   ├── FFmpeg
+   └── Video / Audio Processing
+
+Simulation
+   └── Deep-Live-Cam
+       └── Controlled test generation
+```
+
+---
+
+# 📁 Project Structure
+
+```text
+CallShield/
+│
+├── frontend/
+│   ├── components/
+│   ├── pages/
+│   └── assets/
+│
+├── backend/
+│   ├── api/
+│   ├── models/
+│   ├── detection/
+│   ├── audio/
+│   ├── video/
+│   └── fusion/
+│
+├── simulation/
+│   ├── samples/
+│   └── README.md
+│
+├── datasets/
+│   ├── authentic/
+│   └── simulated/
+│
+├── models/
+│   └── detection_models/
+│
+├── tests/
+│
+├── requirements.txt
+│
+└── README.md
+```
+
+---
+
+# 🔄 End-to-End Pipeline
+
+```text
+             ┌─────────────────────┐
+             │     CALL / MEDIA    │
+             └──────────┬──────────┘
+                        │
+                        ▼
+              ┌───────────────────┐
+              │  MEDIA INGESTION  │
+              └─────────┬─────────┘
+                        │
+              ┌─────────┴─────────┐
+              │                   │
+              ▼                   ▼
+        ┌───────────┐       ┌───────────┐
+        │   AUDIO   │       │   VIDEO   │
+        └─────┬─────┘       └─────┬─────┘
+              │                   │
+              ▼                   ▼
+        ┌───────────┐       ┌───────────┐
+        │ FEATURES  │       │ FEATURES  │
+        └─────┬─────┘       └─────┬─────┘
+              │                   │
+              └─────────┬─────────┘
+                        ▼
+                 ┌──────────────┐
+                 │ AI DETECTION │
+                 └──────┬───────┘
+                        │
+                        ▼
+                 ┌──────────────┐
+                 │ EVIDENCE     │
+                 │ FUSION       │
+                 └──────┬───────┘
+                        │
+                        ▼
+                 ┌──────────────┐
+                 │ RISK ENGINE  │
+                 └──────┬───────┘
+                        │
+                        ▼
+                 ┌──────────────┐
+                 │ CALLSHIELD   │
+                 │   RESULT     │
+                 └──────────────┘
+```
+
+---
+
+# 🏆 The One-Line Explanation
+
+> **CallShield AI uses controlled deepfake simulations to challenge a multi-modal detection pipeline that analyzes audio and video evidence and provides an early risk assessment for suspicious calls.**
+
+---
+
+# ⚖️ Disclaimer
+
+CallShield AI is a research and defensive-security project.
+
+Deepfake generation tools referenced by the project are used solely for controlled testing, benchmarking, and validation of detection systems.
+
+Users are responsible for ensuring that any media used during testing complies with applicable laws, consent requirements, intellectual-property rights, and ethical standards.
+
+Detection results should be treated as **risk indicators rather than absolute proof of authenticity or fraud**.
+
+---
+
+# 👥 Team
+
+**Team ElevateX**
+
+Building technology for safer digital communication.
+
+```text
+       ┌─────────────────────────┐
+       │       CALLSHIELD        │
+       │                         │
+       │   SIMULATE → DETECT     │
+       │       → VERIFY          │
+       │                         │
+       └─────────────────────────┘
+```
+
+### 🛡️ CallShield AI
+
+**Don't trust the face.
+Don't trust the voice.
+Verify the signal.**
